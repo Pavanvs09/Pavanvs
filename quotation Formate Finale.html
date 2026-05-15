@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Architecture | Quotation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c5a059;
+    --gold-light: #e2c07a;
+    --gold-dark: #9a7a3e;
+    --black: #111111;
+    --dark: #1a1a1a;
+    --mid: #2a2a2a;
+    --surface: #222222;
+    --border: #3a3a3a;
+    --text: #f0ead6;
+    --text-muted: #888880;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0e0e0e;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  #page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--dark);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  /* ── TOP HEADER BAR ── */
+  .top-bar {
+    background: var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand-area { display: flex; align-items: center; gap: 14px; }
+  .brand-icon {
+    width: 58px; height: 58px;
+    background: var(--gold);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+
+  /* ── LOGO UPLOAD ── */
+  .logo-wrap {
+    position: relative;
+    width: 58px; height: 58px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .logo-wrap:hover .logo-overlay { opacity: 1; }
+  .logo-overlay {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.55);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  .logo-overlay svg { width: 18px; height: 18px; }
+  #logo-img {
+    width: 58px; height: 58px;
+    border-radius: 6px;
+    object-fit: cover;
+    display: none;
+  }
+  #logo-file { display: none; }
+  @media print {
+    .logo-overlay { display: none !important; }
+  }
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+  .brand-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+  .total-badge {
+    background: var(--gold);
+    color: var(--black);
+    padding: 8px 18px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .total-badge span { font-size: 10px; display: block; font-weight: 400; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ── ADDRESS BAR ── */
+  .addr-bar {
+    background: var(--mid);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 28px;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-muted);
+    gap: 10px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  .addr-bar .a-item { display: flex; align-items: center; gap: 5px; flex-shrink: 0; white-space: nowrap; }
+  .addr-bar .a-item.addr-main { flex: 1; min-width: 0; }
+  .addr-bar .a-item i { color: var(--gold); font-size: 12px; flex-shrink: 0; }
+  .addr-bar input.qt-input { background: transparent; border: none; outline: none; color: var(--text-muted); font-family: 'DM Sans',sans-serif; font-size: 11px; }
+  .addr-bar input.qt-input:focus { border-bottom: 1px dashed var(--border); color: var(--text); }
+  #company-addr { width: 100%; min-width: 0; }
+  #company-phone { width: 100px; }
+
+  /* ── BILL TO / META ── */
+  .bill-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 26px 28px 20px;
+    border-bottom: 1px solid var(--border);
+    gap: 20px;
+  }
+  .bill-to { flex: 1; }
+  .bill-to label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); display: block; margin-bottom: 6px; }
+  .client-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--gold-light);
+    border: none; background: transparent;
+    color: var(--gold-light);
+    width: 100%;
+    outline: none;
+  }
+  .client-name:focus { border-bottom: 1px solid var(--gold); }
+  .client-sub {
+    font-size: 12px; color: var(--text-muted);
+    border: none; background: transparent;
+    width: 100%; outline: none; margin-top: 4px;
+  }
+  .client-sub:focus { border-bottom: 1px dashed var(--border); }
+
+  .quote-meta { text-align: right; font-size: 12px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .quote-meta .inv-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); display: block; margin-bottom: 2px; }
+  .invoice-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--gold);
+    background: transparent; border: none;
+    text-align: right; outline: none; width: 160px;
+    display: block;
+  }
+  .invoice-num:focus { border-bottom: 1px solid var(--gold); }
+  .inv-date-wrap { display: flex; flex-direction: column; align-items: flex-end; margin-top: 8px; }
+  .inv-date-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 2px; }
+  .invoice-date-inp {
+    background: transparent; border: none;
+    color: var(--text); font-size: 13px;
+    outline: none; text-align: right;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-muted);
+  }
+  .invoice-date-inp:focus { border-bottom: 1px dashed var(--border); }
+
+  /* ── ITEM PICKER MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.75); z-index: 999;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--dark);
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    width: 480px; max-width: 95vw;
+    max-height: 80vh;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .modal-header {
+    background: var(--black);
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .modal-header h3 { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--gold-light); }
+  .modal-close { background: none; border: none; color: var(--text-muted); font-size: 18px; cursor: pointer; }
+  .modal-close:hover { color: var(--gold); }
+  .modal-body { padding: 16px 20px; overflow-y: auto; flex: 1; }
+  .modal-footer { padding: 12px 20px; border-top: 1px solid var(--border); display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .section-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--gold); margin: 12px 0 6px;
+    font-weight: 600;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  .item-btn {
+    display: block; width: 100%;
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); font-size: 12px;
+    padding: 9px 12px; border-radius: 3px;
+    cursor: pointer; text-align: left; margin-bottom: 5px;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .item-btn:hover { border-color: var(--gold); background: rgba(197,160,89,0.08); color: var(--gold-light); }
+  .item-btn.selected { border-color: var(--gold); background: rgba(197,160,89,0.15); color: var(--gold-light); }
+
+  .modal-input {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); font-size: 12px;
+    padding: 8px 12px; border-radius: 3px; outline: none;
+    font-family: 'DM Sans', sans-serif; width: 100%;
+    margin-bottom: 8px;
+  }
+  .modal-input:focus { border-color: var(--gold); }
+
+  .btn-modal-action {
+    background: var(--gold); color: var(--black);
+    border: none; padding: 9px 18px; border-radius: 3px;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .btn-modal-action:hover { background: var(--gold-light); }
+  .btn-modal-secondary {
+    background: none; color: var(--text-muted);
+    border: 1px solid var(--border); padding: 9px 18px; border-radius: 3px;
+    font-size: 12px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-modal-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  .new-section-row { display: flex; gap: 8px; margin-top: 8px; }
+  .new-section-row input { flex: 1; }
+
+  /* ── GST number input ── */
+  .gst-num-wrap { display: flex; align-items: center; gap: 4px; }
+  .gst-num {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); font-size: 12px;
+    padding: 3px 6px; border-radius: 3px; outline: none;
+    font-family: 'DM Sans', sans-serif;
+    width: 58px; text-align: center;
+  }
+  .gst-num:focus { border-color: var(--gold); }
+  .gst-stepper { display: flex; flex-direction: column; gap: 1px; }
+  .gst-step-btn {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text-muted); font-size: 9px; line-height: 1;
+    padding: 2px 5px; cursor: pointer; border-radius: 2px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .gst-step-btn:hover { color: var(--gold); border-color: var(--gold); }
+  .table-wrap { padding: 0 0 4px; overflow-x: auto; }
+  table.qt {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  table.qt thead tr {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  table.qt thead th {
+    padding: 11px 14px;
+    text-align: left;
+    color: var(--gold);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+  }
+  table.qt thead th:first-child { padding-left: 28px; }
+  table.qt thead th.r { text-align: right; }
+  table.qt thead th:last-child { width: 36px; padding-right: 14px; }
+
+  table.qt tbody tr {
+    border-bottom: 1px solid #2a2a2a;
+    transition: background 0.15s;
+  }
+  table.qt tbody tr:hover { background: #252525; }
+  table.qt tbody tr:nth-child(even) { background: #1e1e1e; }
+  table.qt tbody tr:nth-child(even):hover { background: #252525; }
+
+  table.qt td:first-child { padding-left: 28px; color: var(--text-muted); font-size: 11px; min-width: 28px; }
+  table.qt td.r { text-align: right; }
+  table.qt td .amount { color: var(--gold-light); font-weight: 500; font-size: 13px; }
+
+  .qt-input {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    outline: none;
+    width: 100%;
+  }
+  .qt-input:focus { border-bottom: 1px solid var(--gold); }
+  .qt-input.num { text-align: right; width: 80px; }
+  .qt-input.desc {
+    min-width: 180px;
+    resize: none;
+    overflow: hidden;
+    line-height: 1.5;
+    vertical-align: top;
+    padding: 0;
+    display: block;
+    min-height: 20px;
+  }
+  table.qt td { padding: 9px 14px; vertical-align: top; }
+
+  .del-btn {
+    background: none; border: none;
+    color: #555; cursor: pointer;
+    font-size: 14px; padding: 4px 6px;
+    border-radius: 3px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .del-btn:hover { color: #e05555; background: rgba(224,85,85,0.1); }
+
+  /* ── ADD ROW ── */
+  .add-row-bar {
+    padding: 10px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .btn-add {
+    background: none;
+    border: 1px dashed #3a3a3a;
+    color: var(--text-muted);
+    padding: 7px 16px;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-add:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── TOTALS ── */
+  .totals-section {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .totals-box { width: 280px; }
+  .t-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+    font-size: 13px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .t-row .lbl { color: var(--text-muted); }
+  .t-row .val { font-weight: 500; }
+  .t-row.grand {
+    border-bottom: none;
+    border-top: 2px solid var(--gold);
+    margin-top: 4px;
+    padding-top: 12px;
+    font-size: 15px;
+  }
+  .t-row.grand .lbl { color: var(--gold); font-family: 'Playfair Display', serif; }
+  .t-row.grand .val { color: var(--gold); font-weight: 700; font-size: 16px; }
+
+  /* GST toggle */
+  .gst-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 11px; color: var(--text-muted); }
+  .gst-select {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); font-size: 11px;
+    padding: 2px 6px; border-radius: 3px; outline: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── PAYMENT SCHEDULE ── */
+  .payment-section { padding: 22px 28px; border-bottom: 1px solid var(--border); }
+  .section-title {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  .payment-cards { display: flex; gap: 10px; flex-wrap: wrap; }
+  .pay-card {
+    background: var(--black);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 16px;
+    flex: 1; min-width: 100px;
+    text-align: center;
+  }
+  .pay-card.highlight { border-color: var(--gold); background: rgba(197,160,89,0.07); }
+  .pay-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700;
+    color: var(--gold);
+    border: none; background: transparent;
+    text-align: center; width: 100%; outline: none;
+    font-family: 'Playfair Display', serif;
+  }
+  .pay-label {
+    font-size: 10px; color: var(--text-muted);
+    margin-top: 6px;
+    border: none; background: transparent;
+    text-align: center; width: 100%; outline: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .pay-label:focus { border-bottom: 1px dashed var(--gold); }
+
+  /* ── TERMS ── */
+  .terms-section { padding: 22px 28px; border-bottom: 1px solid var(--border); }
+  .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+  .term-item {
+    display: flex; gap: 8px; align-items: flex-start;
+    font-size: 11px; color: var(--text-muted);
+    padding: 6px 0;
+  }
+  .term-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0; margin-top: 3px;
+  }
+  .term-text {
+    background: transparent; border: none;
+    color: var(--text-muted); font-size: 11px;
+    font-family: 'DM Sans', sans-serif;
+    resize: none; outline: none; width: 100%;
+    line-height: 1.5;
+  }
+  .term-text:focus { color: var(--text); }
+
+  .add-term-btn {
+    background: none; border: 1px dashed #333;
+    color: #555; font-size: 11px; padding: 5px 12px;
+    border-radius: 3px; cursor: pointer; margin-top: 10px;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .add-term-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 28px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; color: var(--gold-light);
+    font-weight: 600; letter-spacing: 1px;
+  }
+  .footer-addr { font-size: 10px; color: var(--text-muted); margin-top: 3px; }
+
+  .btn-print {
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 3px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    display: flex; align-items: center; gap: 8px;
+    transition: background 0.2s;
+  }
+  .btn-print:hover { background: var(--gold-light); }
+  .btn-print svg { width: 15px; height: 15px; }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    @page { margin: 0; size: A4; }
+    html, body {
+      background: #0e0e0e !important;
+      padding: 0; margin: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    #page { border: none; box-shadow: none; border-radius: 0; background: #1a1a1a !important; }
+    .btn-print, .btn-add, .del-btn, .add-term-btn, .gst-stepper { display: none !important; }
+    .modal-overlay { display: none !important; }
+    .top-bar { background: #111111 !important; }
+    .addr-bar { background: #2a2a2a !important; }
+    .total-badge { background: #c5a059 !important; color: #111111 !important; }
+    .brand-icon { background: #c5a059 !important; color: #111111 !important; }
+    table.qt thead tr { background: #111111 !important; }
+    table.qt tbody tr:nth-child(even) { background: #1e1e1e !important; }
+    .pay-card { background: #111111 !important; }
+    .pay-card.highlight { background: rgba(197,160,89,0.12) !important; border-color: #c5a059 !important; }
+    .footer { background: #111111 !important; }
+    .gst-num { background: #222 !important; }
+  }
+
+  /* ── LOGIN OVERLAY ── */
+  #login-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #0a0a0a;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .login-box {
+    background: #1a1a1a;
+    border: 1px solid #3a3a3a;
+    border-top: 3px solid #c5a059;
+    border-radius: 6px;
+    padding: 48px 44px 40px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+  .login-icon {
+    width: 56px; height: 56px;
+    background: #c5a059;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; color: #111;
+    margin: 0 auto 16px;
+  }
+  .login-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: #e2c07a; letter-spacing: 1px; margin-bottom: 4px;
+  }
+  .login-sub { font-size: 11px; color: #888880; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 32px; }
+  .login-field { margin-bottom: 16px; text-align: left; }
+  .login-field label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #888880; margin-bottom: 6px; }
+  .login-field input {
+    width: 100%; padding: 11px 14px;
+    background: #222; border: 1px solid #3a3a3a;
+    border-radius: 3px; color: #f0ead6;
+    font-family: 'DM Sans', sans-serif; font-size: 13px;
+    outline: none; transition: border-color 0.2s;
+  }
+  .login-field input:focus { border-color: #c5a059; }
+  .login-btn {
+    width: 100%; padding: 12px;
+    background: #c5a059; color: #111;
+    border: none; border-radius: 3px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    letter-spacing: 0.5px; margin-top: 8px;
+    transition: background 0.2s;
+  }
+  .login-btn:hover { background: #e2c07a; }
+  .login-error {
+    color: #e05555; font-size: 12px; margin-top: 12px;
+    min-height: 18px; display: none;
+  }
+  .login-web { font-size: 10px; color: #c5a059; margin-top: 20px; letter-spacing: 1px; }
+
+
+  /* ── EDITABLE BRAND FIELDS ── */
+  .brand-edit {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 1px; line-height: 1.2;
+    background: transparent; border: none; outline: none;
+    display: block; width: 220px;
+    cursor: text;
+  }
+  .brand-edit:hover { border-bottom: 1px dashed rgba(197,160,89,0.4); }
+  .brand-edit:focus { border-bottom: 1px solid var(--gold); }
+  .brand-edit-sub {
+    font-size: 10px; color: var(--text-muted);
+    letter-spacing: 2px; text-transform: uppercase;
+    background: transparent; border: none; outline: none;
+    display: block; width: 220px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: text; margin-top: 2px;
+  }
+  .brand-edit-sub:hover { border-bottom: 1px dashed #444; }
+  .brand-edit-sub:focus { border-bottom: 1px dashed var(--border); color: var(--text); }
+  .footer-brand-edit {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; color: var(--gold-light);
+    font-weight: 600; letter-spacing: 1px;
+    background: transparent; border: none; outline: none;
+    display: block; width: 260px; cursor: text;
+  }
+  .footer-brand-edit:hover { border-bottom: 1px dashed rgba(197,160,89,0.4); }
+  .footer-brand-edit:focus { border-bottom: 1px solid var(--gold); }
+  .footer-addr-edit {
+    font-size: 10px; color: var(--text-muted); margin-top: 3px;
+    background: transparent; border: none; outline: none;
+    display: block; width: 320px; cursor: text;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .footer-addr-edit:hover { border-bottom: 1px dashed #444; }
+  .footer-addr-edit:focus { border-bottom: 1px dashed var(--border); color: var(--text); }
+
+  /* ── SYNC BRAND NOTE ── */
+  .edit-hint {
+    font-size: 9px; color: #555; text-align: center;
+    padding: 4px 0 0; letter-spacing: 1px;
+  }
+
+  /* ── SHARE BANNER ── */
+  #share-banner {
+    background: #161616; border-bottom: 1px solid #2a2a2a;
+    padding: 10px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap;
+  }
+  .share-info { font-size: 11px; color: #666; }
+  .share-info strong { color: var(--gold); }
+  .share-steps { font-size: 10px; color: #555; margin-top: 3px; }
+  .share-steps a { color: var(--gold); text-decoration: none; }
+  .share-steps a:hover { text-decoration: underline; }
+  .share-dismiss {
+    background: none; border: 1px solid #333; color: #555;
+    font-size: 10px; padding: 4px 10px; border-radius: 3px;
+    cursor: pointer; font-family: 'DM Sans', sans-serif; flex-shrink: 0;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .share-dismiss:hover { border-color: #555; color: #888; }
+  @media print { #share-banner { display: none !important; } }
+</style>
+</head>
+<body>
+
+
+<!-- LOGIN OVERLAY -->
+<div id="login-overlay">
+  <div class="login-box">
+    <div class="login-icon">R</div>
+    <div class="login-title">Royal Architecture</div>
+    <div class="login-sub">Interior &amp; Design Solutions</div>
+    <div class="login-field">
+      <label>User ID</label>
+      <input type="text" id="login-id" placeholder="Enter your ID" autocomplete="username">
+    </div>
+    <div class="login-field">
+      <label>Password</label>
+      <input type="password" id="login-pw" placeholder="Enter your password" autocomplete="current-password" onkeydown="if(event.key==='Enter') doLogin()">
+    </div>
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <div class="login-error" id="login-err">Incorrect ID or password. Please try again.</div>
+    <div class="login-web">www.royal.com</div>
+  </div>
+</div>
+
+<div id="page">
+
+  <!-- SHARE BANNER -->
+  <div id="share-banner">
+    <div>
+      <div class="share-info">🔗 <strong>Want to share this invoice?</strong> Host the file free on Netlify Drop or GitHub Pages and share the link.</div>
+      <div class="share-steps">
+        1. Save this file → 2. Go to <a href="https://app.netlify.com/drop" target="_blank">app.netlify.com/drop</a> → 3. Drag &amp; drop the file → 4. Copy &amp; share the link instantly
+      </div>
+    </div>
+    <button class="share-dismiss" onclick="this.parentElement.style.display='none'">Dismiss</button>
+  </div>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="brand-area">
+      <!-- LOGO UPLOAD -->
+      <div class="logo-wrap" onclick="document.getElementById('logo-file').click()" title="Click to upload logo">
+        <div class="brand-icon" id="brand-icon-letter">R</div>
+        <img id="logo-img" src="" alt="Logo">
+        <div class="logo-overlay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+        </div>
+        <input type="file" id="logo-file" accept="image/*" onchange="handleLogoUpload(event)">
+      </div>
+      <div>
+        <input class="brand-name brand-edit" id="brand-name-top" value="Royal Architecture" title="Click to edit">
+        <input class="brand-sub brand-edit-sub" id="brand-sub-top" value="Interior & Design Solutions" title="Click to edit">
+      </div>
+    </div>
+    <div class="total-badge">
+      <span>Total Amount</span>
+      <span id="header-total">₹ 0.00</span>
+    </div>
+  </div>
+
+  <!-- ADDRESS BAR -->
+  <div class="addr-bar">
+    <div class="a-item addr-main">
+      <i>📍</i>
+      <input class="qt-input" id="company-addr" value="Anjanapura Double Road, Kanakapura, Bengaluru – 560062">
+    </div>
+    <div class="a-item">
+      <i>📞</i>
+      <input class="qt-input" id="company-phone" value="6366798583">
+    </div>
+
+  </div>
+
+  <!-- BILL TO -->
+  <div class="bill-section">
+    <div class="bill-to">
+      <label>Billed To</label>
+      <input class="client-name" id="client-name" value="Ms. Poorvitha" placeholder="Client Name">
+      <input class="client-sub qt-input" id="client-place" value="Basavilasa" placeholder="Location / Project">
+      <input class="client-sub qt-input" id="client-phone" value="8147556335" placeholder="Phone" style="margin-top:4px">
+    </div>
+    <div class="quote-meta">
+      <div>
+        <span class="inv-label">Invoice No</span>
+        <input class="invoice-num" id="inv-num" value="RA-0892">
+      </div>
+      <div class="inv-date-wrap">
+        <span class="inv-date-lbl">Invoice Date</span>
+        <input class="invoice-date-inp" id="inv-date" type="date" value="2026-05-15">
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table class="qt" id="itemTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Description</th>
+          <th class="r">Rate (₹)</th>
+          <th class="r">Qty (Sq.ft)</th>
+          <th class="r">Amount (₹)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+  </div>
+
+  <div class="add-row-bar">
+    <button class="btn-add" onclick="openPicker()">+ Add Item</button>
+  </div>
+
+  <!-- ITEM PICKER MODAL -->
+  <div class="modal-overlay" id="picker-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Select Item</h3>
+        <button class="modal-close" onclick="closePicker()">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- sections rendered by JS -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal-action" onclick="confirmPick()">Add Selected</button>
+        <button class="btn-modal-secondary" onclick="addCustom()">+ Custom Item</button>
+        <button class="btn-modal-secondary" onclick="showAddSection()">+ New Section</button>
+        <button class="btn-modal-secondary" onclick="showAddToSection()">+ Item to Section</button>
+      </div>
+      <div id="new-section-box" style="display:none; padding: 0 20px 14px;">
+        <div class="new-section-row">
+          <input class="modal-input" id="new-section-input" placeholder="Section name (e.g. Bedroom, Living Room)">
+          <button class="btn-modal-action" onclick="addSection()">Add</button>
+        </div>
+      </div>
+      <div id="add-to-section-box" style="display:none; padding: 0 20px 14px; border-top: 1px solid #2a2a2a;">
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:8px; margin-top:12px;">Add a new item into an existing section:</div>
+        <div class="new-section-row">
+          <select class="modal-input" id="section-select" style="flex:1; cursor:pointer;"></select>
+          <input class="modal-input" id="new-item-input" placeholder="Item name" style="flex:2;">
+          <button class="btn-modal-action" onclick="addItemToSection()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOTALS -->
+  <div class="totals-section">
+    <div class="totals-box">
+      <div class="gst-toggle">
+        <span>GST %:</span>
+        <div class="gst-num-wrap">
+          <input class="gst-num" id="gst-rate" type="number" min="0" max="20" value="18" onchange="clampGst(); calculate()" oninput="clampGst(); calculate()">
+          <div class="gst-stepper">
+            <button class="gst-step-btn" onclick="stepGst(1)">▲</button>
+            <button class="gst-step-btn" onclick="stepGst(-1)">▼</button>
+          </div>
+        </div>
+      </div>
+      <div class="t-row">
+        <span class="lbl">Sub Total</span>
+        <span class="val" id="subtotal">₹ 0.00</span>
+      </div>
+      <div class="t-row">
+        <span class="lbl" id="gst-lbl">GST (18%)</span>
+        <span class="val" id="gst">₹ 0.00</span>
+      </div>
+      <div class="t-row grand">
+        <span class="lbl">TOTAL</span>
+        <span class="val" id="grandtotal">₹ 0.00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYMENT SCHEDULE -->
+  <div class="payment-section">
+    <div class="section-title">Payment Schedule</div>
+    <div class="payment-cards" id="pay-cards">
+      <div class="pay-card">
+        <input class="pay-pct" value="20%" onchange="validatePct()">
+        <input class="pay-label" value="Advance on work order initiation">
+      </div>
+      <div class="pay-card">
+        <input class="pay-pct" value="70%" onchange="validatePct()">
+        <input class="pay-label" value="On material arrival at site">
+      </div>
+      <div class="pay-card">
+        <input class="pay-pct" value="10%" onchange="validatePct()">
+        <input class="pay-label" value="At 90% project completion">
+      </div>
+      <div class="pay-card highlight">
+        <input class="pay-pct" value="Balance" style="font-size:18px">
+        <input class="pay-label" value="Before final handover">
+      </div>
+    </div>
+  </div>
+
+  <!-- TERMS & CONDITIONS -->
+  <div class="terms-section">
+    <div class="section-title">Terms &amp; Conditions</div>
+    <div class="terms-grid" id="terms-grid">
+    </div>
+    <button class="add-term-btn" onclick="addTerm()">+ Add Term</button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <input class="footer-brand footer-brand-edit" id="brand-name-bot" value="Royal Architecture" title="Click to edit">
+      <input class="footer-addr footer-addr-edit" id="footer-addr" value="Kanakapura Rd, Bengaluru, Karnataka 560062 | MOB: 6366798583" title="Click to edit">
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+      </svg>
+      Print / Save as PDF
+    </button>
+  </div>
+
+</div>
+
+<script>
+// ── ITEM CATALOG ──
+let catalog = {
+  'Kitchen': [
+    'Kitchen Base Unit Single Side',
+    'Kitchen Middle Unit',
+    'Kitchen Loft With Lintal',
+    'Tall Unit',
+    'Tamdom',
+  ],
+  'Living Room': [
+    'T V Unit',
+    'Arch Pannelling',
+    'Pull Out Mirror',
+  ],
+  'Wardrobe': [
+    'Room 1 Wardroba Sliding',
+    'Room 1 Loft With Lintla',
+    'Room 2 Wardroba Openable',
+    'Room 2 Loft With Lintla',
+    'Room 3 Wardroba Sliding',
+    'Room 3 Loft Without Lintla',
+    'Dressing Unit',
+  ],
+};
+
+let selectedItem = null;
+
+const DEFAULT_ITEMS = [
+  { desc: 'T V Unit',                      rate: 1000, qty: 77.9  },
+  { desc: 'Kitchen Base Unit Single Side',  rate: 1100, qty: 32.48 },
+  { desc: 'Kitchen Middle Unit',            rate: 800,  qty: 17    },
+  { desc: 'Kitchen Loft With Lintal',       rate: 700,  qty: 51.6  },
+  { desc: 'Tall Unit',                      rate: 1100, qty: 18.2  },
+  { desc: 'Tamdom',                         rate: 5000, qty: 3     },
+  { desc: 'Arch Pannelling',                rate: 700,  qty: 117   },
+  { desc: 'Room 1 Wardroba Sliding',        rate: 1200, qty: 45.5  },
+  { desc: 'Room 1 Loft With Lintla',        rate: 600,  qty: 45    },
+  { desc: 'Pull Out Mirror',                rate: 3000, qty: 1     },
+  { desc: 'Room 2 Wardroba Openable',       rate: 1100, qty: 35    },
+  { desc: 'Room 2 Loft With Lintla',        rate: 600,  qty: 39    },
+  { desc: 'Room 3 Wardroba Sliding',        rate: 1200, qty: 35    },
+  { desc: 'Room 3 Loft Without Lintla',     rate: 700,  qty: 261   },
+  { desc: 'Dressing Unit',                  rate: 900,  qty: 112   }
+];
+
+const DEFAULT_TERMS = [
+  'Customer must provide on-site accommodation for labor including toilet facilities, also additional charges apply.',
+  'Only matte finish & solid colors included. Extra color choices attract a surcharge of ₹100 per sq.ft.',
+  'Extra work will incur extra charges. Extra drawer: ₹2,500 each (beyond standard 2 drawers per wardrobe).',
+  'Electrical, civil, and plumbing work are not in our scope and must be handled separately.',
+  'All aluminium work is in our scope, measured in square feet.',
+  'Post-work cleaning and debris removal are not included. Client must arrange a separate cleaning team.'
+];
+
+let rowCount = 0;
+
+function fmt(n) {
+  return '₹ ' + n.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+// ── AUTO-RESIZE TEXTAREA ──
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+
+// ── TABLE ROW ──
+function addRow(desc='', rate=0, qty=0) {
+  rowCount++;
+  const tbody = document.getElementById('tbody');
+  const tr = document.createElement('tr');
+  const amt = (rate * qty);
+  tr.innerHTML = `
+    <td>${rowCount}</td>
+    <td><textarea class="qt-input desc" rows="1" placeholder="Enter description" oninput="autoResize(this)">${desc}</textarea></td>
+    <td class="r"><input class="qt-input num" value="${rate}" onchange="calculate()"></td>
+    <td class="r"><input class="qt-input num" value="${qty}" onchange="calculate()"></td>
+    <td class="r amount">${amt.toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
+    <td><button class="del-btn" title="Remove" onclick="this.closest('tr').remove(); renumber(); calculate()">✕</button></td>
+  `;
+  tbody.appendChild(tr);
+  // auto-resize on load for pre-filled descriptions
+  const ta = tr.querySelector('textarea.desc');
+  if (ta) autoResize(ta);
+  calculate();
+}
+
+function renumber() {
+  document.querySelectorAll('#tbody tr').forEach((tr, i) => {
+    tr.cells[0].textContent = i + 1;
+  });
+  rowCount = document.querySelectorAll('#tbody tr').length;
+}
+
+function calculate() {
+  let subtotal = 0;
+  document.querySelectorAll('#tbody tr').forEach(tr => {
+    const rate = parseFloat(tr.cells[2].querySelector('input').value) || 0;
+    const qty  = parseFloat(tr.cells[3].querySelector('input').value) || 0;
+    const amt  = rate * qty;
+    tr.cells[4].textContent = amt.toLocaleString('en-IN', {minimumFractionDigits:2});
+    subtotal += amt;
+  });
+  const gstRate = parseFloat(document.getElementById('gst-rate').value) || 0;
+  const gst = subtotal * gstRate / 100;
+  const grand = subtotal + gst;
+  document.getElementById('subtotal').textContent     = fmt(subtotal);
+  document.getElementById('gst').textContent          = fmt(gst);
+  document.getElementById('grandtotal').textContent   = fmt(grand);
+  document.getElementById('header-total').textContent = fmt(grand);
+  document.getElementById('gst-lbl').textContent      = `GST (${gstRate}%)`;
+}
+
+// ── GST STEPPER ──
+function stepGst(dir) {
+  const el = document.getElementById('gst-rate');
+  let v = parseFloat(el.value) || 0;
+  v = Math.min(20, Math.max(0, v + dir));
+  el.value = v;
+  calculate();
+}
+function clampGst() {
+  const el = document.getElementById('gst-rate');
+  let v = parseFloat(el.value);
+  if (isNaN(v)) v = 0;
+  el.value = Math.min(20, Math.max(0, v));
+}
+
+// ── MODAL PICKER ──
+function renderModalBody() {
+  const body = document.getElementById('modal-body');
+  body.innerHTML = '';
+  for (const [section, items] of Object.entries(catalog)) {
+    const lbl = document.createElement('div');
+    lbl.className = 'section-label';
+    lbl.textContent = section;
+    body.appendChild(lbl);
+    items.forEach(item => {
+      const btn = document.createElement('button');
+      btn.className = 'item-btn' + (selectedItem === item ? ' selected' : '');
+      btn.textContent = item;
+      btn.onclick = () => {
+        document.querySelectorAll('.item-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedItem = item;
+      };
+      body.appendChild(btn);
+    });
+  }
+}
+
+function openPicker() {
+  selectedItem = null;
+  document.getElementById('new-section-box').style.display = 'none';
+  document.getElementById('add-to-section-box').style.display = 'none';
+  document.getElementById('picker-overlay').classList.add('open');
+  renderModalBody();
+}
+
+function closePicker() {
+  document.getElementById('picker-overlay').classList.remove('open');
+  selectedItem = null;
+}
+
+function confirmPick() {
+  if (!selectedItem) { alert('Please select an item first.'); return; }
+  addRow(selectedItem, 0, 0);
+  closePicker();
+}
+
+function addCustom() {
+  const name = prompt('Enter custom item description:');
+  if (name && name.trim()) {
+    addRow(name.trim(), 0, 0);
+    closePicker();
+  }
+}
+
+function showAddSection() {
+  const box = document.getElementById('new-section-box');
+  const box2 = document.getElementById('add-to-section-box');
+  box2.style.display = 'none';
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  if (box.style.display === 'block') document.getElementById('new-section-input').focus();
+}
+
+function showAddToSection() {
+  const box = document.getElementById('add-to-section-box');
+  const box2 = document.getElementById('new-section-box');
+  box2.style.display = 'none';
+  const isOpen = box.style.display !== 'none';
+  box.style.display = isOpen ? 'none' : 'block';
+  if (!isOpen) {
+    const sel = document.getElementById('section-select');
+    sel.innerHTML = Object.keys(catalog).map(s => `<option value="${s}">${s}</option>`).join('');
+    document.getElementById('new-item-input').value = '';
+    document.getElementById('new-item-input').focus();
+  }
+}
+
+function addItemToSection() {
+  const section = document.getElementById('section-select').value;
+  const name = document.getElementById('new-item-input').value.trim();
+  if (!name) return;
+  if (!catalog[section]) catalog[section] = [];
+  if (catalog[section].includes(name)) { alert('Item already exists in this section.'); return; }
+  catalog[section].push(name);
+  document.getElementById('new-item-input').value = '';
+  document.getElementById('add-to-section-box').style.display = 'none';
+  renderModalBody();
+}
+
+function addSection() {
+  const input = document.getElementById('new-section-input');
+  const name = input.value.trim();
+  if (!name) return;
+  if (catalog[name]) { alert('Section already exists.'); return; }
+  catalog[name] = [];
+  input.value = '';
+  document.getElementById('new-section-box').style.display = 'none';
+  renderModalBody();
+}
+
+// Close modal on overlay click
+document.getElementById('picker-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closePicker();
+});
+
+// ── TERMS ──
+function addTerm(text='') {
+  const grid = document.getElementById('terms-grid');
+  const div = document.createElement('div');
+  div.className = 'term-item';
+  div.innerHTML = `<div class="term-dot"></div>
+    <textarea class="term-text" rows="2" onkeydown="removeTerm(event,this)">${text}</textarea>`;
+  grid.appendChild(div);
+}
+function removeTerm(e, el) {
+  if (e.key === 'Backspace' && el.value === '') el.closest('.term-item').remove();
+}
+
+// Init
+DEFAULT_ITEMS.forEach(it => addRow(it.desc, it.rate, it.qty));
+DEFAULT_TERMS.forEach(t => addTerm(t));
+
+// ── LOGIN ──
+function doLogin() {
+  const id = document.getElementById('login-id').value.trim();
+  const pw = document.getElementById('login-pw').value;
+  const err = document.getElementById('login-err');
+  if (id === 'Pavan' && pw === 'Pavan@2002') {
+    document.getElementById('login-overlay').style.display = 'none';
+    err.style.display = 'none';
+  } else {
+    err.style.display = 'block';
+    document.getElementById('login-pw').value = '';
+    document.getElementById('login-pw').focus();
+  }
+}
+// Auto-focus on ID field
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('login-id').focus();
+});
+
+// ── LOGO UPLOAD ──
+function handleLogoUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = document.getElementById('logo-img');
+    const letter = document.getElementById('brand-icon-letter');
+    img.src = e.target.result;
+    img.style.display = 'block';
+    letter.style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── SYNC BRAND NAME TOP ↔ BOTTOM ──
+document.getElementById('brand-name-top').addEventListener('input', function() {
+  document.getElementById('brand-name-bot').value = this.value;
+});
+document.getElementById('brand-name-bot').addEventListener('input', function() {
+  document.getElementById('brand-name-top').value = this.value;
+});
+</script>
+</body>
+</html>
